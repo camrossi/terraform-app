@@ -24,8 +24,8 @@ resource "aci_application_profile" "app" {
 }
 
 resource "aci_application_epg" "epgs" {
-  for_each = {for v in var.epgs:  v.index_key => v}
-  name  = each.value[0]
+  for_each = {for epg in var.epgs:  epg.index_key => epg}
+  name  = each.value
   application_profile_dn = aci_application_profile.app.id
   relation_fv_rs_bd = data.terraform_remote_state.networking.outputs.bd_id
 }
