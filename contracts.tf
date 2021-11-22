@@ -1,10 +1,10 @@
 resource "aci_filter" "web2app" {
-  tenant_dn = data.terraform_remote_state.networking.tenant_id
+  tenant_dn = data.terraform_remote_state.networking.outputs.tenant_id
   name      = "web2app"
 }
 
 resource "aci_filter" "app2db" {
-  tenant_dn = data.terraform_remote_state.networking.tenant_id
+  tenant_dn = data.terraform_remote_state.networking.outputs.tenant_id
   name      = "app2db"
 }
 
@@ -27,7 +27,7 @@ resource "aci_filter_entry" "app2db" {
 }
 
 resource "aci_contract" "web2app" {
-  tenant_dn = data.terraform_remote_state.networking.tenant_id
+  tenant_dn = data.terraform_remote_state.networking.outputs.tenant_id
   name      = "web2app"
 }
 
@@ -38,7 +38,7 @@ resource "aci_contract_subject" "web2app" {
 }
 
 resource "aci_contract" "app2db" {
-  tenant_dn = data.terraform_remote_state.networking.tenant_id
+  tenant_dn = data.terraform_remote_state.networking.outputs.tenant_id
   name      = "app2db"
 }
 
