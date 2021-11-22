@@ -15,4 +15,3 @@ variable "app" {
 variable "epgs" {
   type = list
 }
-

@@ -48,3 +48,11 @@ resource "aci_contract_subject" "app2db" {
   relation_vz_rs_subj_filt_att = aci_filter.app2db.id
 }
 
+resource "aci_epg_to_contract" "example" {
+  application_epg_dn = aci_application_epg.epgs[0]
+  contract_dn        = aci_contract.demo_contract.id
+  contract_type      = "provider"
+  annotation         = "terraform"
+  match_t            = "AtleastOne"
+  prio               = "unspecified"
+}
