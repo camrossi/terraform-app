@@ -19,7 +19,7 @@ provider "aci" {
 }
 
 resource "aci_application_profile" "app" {
-  tenant_dn = data.terraform_remote_state.networking.outputs.tenant_id
+  tenant_dn = data.terraform_remote_state.networking.tenant_id
   name      = var.app
 }
 
@@ -27,5 +27,8 @@ resource "aci_application_epg" "epgs" {
   count = length(var.epgs)
   name  = var.epgs[count.index]
   application_profile_dn = aci_application_profile.app.id
-  
+  relation_fv_rs_bd = data.terraform_remote_state.networking.bd_id
 }
+
+
+
