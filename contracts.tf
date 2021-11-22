@@ -34,7 +34,7 @@ resource "aci_contract" "web2app" {
 resource "aci_contract_subject" "web2app" {
   contract_dn                  = aci_contract.web2app.id
   name                         = "Subj"
-  relation_vz_rs_subj_filt_att = aci_filter.web2app.id
+  relation_vz_rs_subj_filt_att = [aci_filter.web2app.id]
 }
 
 resource "aci_contract" "app2db" {
@@ -45,7 +45,7 @@ resource "aci_contract" "app2db" {
 resource "aci_contract_subject" "app2db" {
   contract_dn                  = aci_contract.app2db.id
   name                         = "Subj"
-  relation_vz_rs_subj_filt_att = aci_filter.app2db.id
+  relation_vz_rs_subj_filt_att = [aci_filter.app2db.id]
 }
 
 resource "aci_epg_to_contract" "web2app" {
