@@ -63,7 +63,7 @@ resource "aci_epg_to_contract" "app2web" {
 
 resource "aci_epg_to_contract" "app2db" {
   application_epg_dn = aci_application_epg.epgs["app"].id
-  contract_dn        = aci_contract.web2app.id
+  contract_dn        = aci_contract.app2db.id
   contract_type      = "consumer"
 
 }
