@@ -10,6 +10,14 @@ data "terraform_remote_state" "networking" {
   }
 }
 
+provider "aci" {
+  # cisco-aci user name
+  username = var.aci_username
+  password =  var.aci_password
+  url      = var.apic_url
+  insecure = true
+}
+
 resource "aci_application_profile" "app" {
   tenant_dn = data.terraform_remote_state.networking.outputs.tenant_id
   name      = var.app
